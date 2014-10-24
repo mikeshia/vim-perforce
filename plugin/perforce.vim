@@ -84,7 +84,7 @@ function! s:warn(str) abort
 endfunction
 
 function! s:err(str) abort
-  echoerr 'vim-perforce: ' . a:str
+  echoerr 'vim-perforce: (Did you: export P4CLIENT=P4_WORK_SPACE) ' . a:str
 endfunction
 
 function! s:P4ShellCurrentBuffer(cmd)
