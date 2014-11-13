@@ -17,6 +17,7 @@ endif
 
 " Available commands
 
+command P4hist call perforce#P4CallFileLog()
 command P4info call perforce#P4CallInfo()
 command P4edit call perforce#P4CallEdit()
 command P4revert call perforce#P4CallRevert()
@@ -145,6 +146,15 @@ function! perforce#P4CallEditWithPrompt()
       redraw
     endif
   endif
+endfunction
+
+function! perforce#P4CallFileLog()
+  let output = s:P4ShellCurrentBuffer('filelog -hil')
+  if v:shell_error != 0
+    call s:err('Unable to open file for edit.')
+    return 1
+  endif
+  echo output
 endfunction
 
 function! perforce#P4CallEdit()
